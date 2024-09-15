@@ -76,9 +76,9 @@ _list_profiles() {
 
 # Obtain the board name of the device running the installation script
 if [ -e /etc/board.info ] && grep -q "board.shortname" /etc/board.info; then
-    board=$(sed -n 's/^board.shortname=\s*\(.*\)\s*/\1/p' /etc/board.info)
+    board=$(sed -n 's/^board\.shortname=//p' /etc/board.info)
 elif [ -e /proc/ubnthal/system.info ] && grep -q "shortname" /proc/ubnthal/system.info; then
-    board=$(sed -n 's/shortname=\s*\(.*\)\s*/\1/p' /proc/ubnthal/system.info)
+    board=$(sed -n 's/^shortname=//p' /proc/ubnthal/system.info)
 else
     board=""
 fi
